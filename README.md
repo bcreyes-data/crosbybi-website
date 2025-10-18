@@ -4,7 +4,7 @@ This repository contains the source code for a responsive, single-page marketing
 
 ## Live Demo
 
-You can view the live website here: **[brandonreyes.netlify.app](https://brandonreyes.netlify.app)**
+You can view the live website here: **https://bcreyes-data.github.io/crosbybi-website/**
 
 *(Note: If this project is hosted elsewhere, please update the link!)*
 
