@@ -58,8 +58,24 @@
         .hero {
             background: var(--primary-color);
             color: var(--bg-white);
-            text-align: center;
-            padding: 100px 20px;
+            padding: 80px 0;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .hero-text {
+            text-align: left;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
         }
 
         .hero h1 {
@@ -73,6 +89,14 @@
             max-width: 700px;
             margin: 0 auto 30px auto;
             opacity: 0.9;
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .hero-text { text-align: center; }
         }
 
         .cta-button {
@@ -336,9 +360,16 @@
     <!-- HERO SECTION -->
     <main>
         <section class="hero">
-            <h1>Stop Guessing. Start Knowing.</h1>
-            <p>We transform your messy, scattered data into clear, automated Power BI dashboards that give you the confidence to grow your business.</p>
-            <a href="https://calendly.com/crosbybi/15min" target="_blank" class="cta-button">Schedule Your Free Consultation</a>
+            <div class="container hero-grid">
+                <div class="hero-text">
+                    <h1>Stop Guessing. Start Knowing.</h1>
+                    <p>We transform your messy, scattered data into clear, automated Power BI dashboards that give you the confidence to grow your business.</p>
+                    <a href="https://calendly.com/crosbybi/15min" target="_blank" class="cta-button">Schedule Your Free Consultation</a>
+                </div>
+                <div class="hero-image">
+                    <img src="images/cartoon-crosbybi.png" alt="Cartoon of a data expert transforming messy data into clear insights.">
+                </div>
+            </div>
         </section>
 
         <!-- PROBLEM SECTION -->
@@ -409,7 +440,7 @@
 
 
         <!-- SERVICES SECTION -->
-        <section id="services" class="section section-light">
+        <section id="services" class="section section-dark">
             <div class="container">
                 <h2 class="section-title">How We Help</h2>
                 <p class="section-subtitle">We offer a range of services designed to meet you where you are on your data journey.</p>
