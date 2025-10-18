@@ -4,15 +4,13 @@ This repository contains the source code for a responsive, single-page marketing
 
 ## Live Demo
 
-You can view the live website here: **[brandonreyes.netlify.app](https://brandonreyes.netlify.app)**
-
-*(Note: If this project is hosted elsewhere, please update the link!)*
+You can view the live website here: **https://bcreyes-data.github.io/crosbybi-website/**
 
 ## Technologies Used
 
 *   **HTML5:** For semantic and accessible content structure.
 *   **CSS3:** For all styling, using modern features like CSS Variables, Flexbox, and Grid for a responsive layout.
-*   **No frameworks or libraries:** This project is built with pure HTML and CSS to demonstrate foundational web development skills.
+*   **No frameworks or libraries:** This project is built with pure HTML and CSS.
 
 ## Purpose
 
