@@ -48,11 +48,19 @@
             vertical-align: middle; /* Aligns the image nicely with the nav links */
         }
 
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
         .nav-links a {
             color: var(--primary-color);
             text-decoration: none;
             margin-left: 25px;
             font-weight: 500;
+        }
+        .lang-switcher {
+            margin-left: 30px;
         }
 
         .hero {
@@ -349,11 +357,16 @@
     <header class="header">
         <div class="container navbar">
             <a href="#" class="logo"><img src="images/Crosby BI Logo.png" alt="Crosby BI Logo"></a>
-            <nav class="nav-links">
-                <a href="#services">Services</a>
-                <a href="#plan">Our Plan</a>
-                <a href="#contact">Contact</a>
-            </nav>
+            <div class="nav-right">
+                <nav class="nav-links">
+                    <a href="#services" data-key="navServices">Services</a>
+                    <a href="#plan" data-key="navPlan">Our Plan</a>
+                    <a href="#contact" data-key="navContact">Contact</a>
+                </nav>
+                <div class="lang-switcher">
+                    <a href="#" onclick="setLanguage('en')">EN</a> | <a href="#" onclick="setLanguage('es')">ES</a>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -362,9 +375,9 @@
         <section class="hero">
             <div class="container hero-grid">
                 <div class="hero-text">
-                    <h1>Stop Guessing. Start Knowing.</h1>
-                    <p>We transform your messy, scattered data into clear, automated Power BI dashboards that give you the confidence to grow your business.</p>
-                    <a href="https://calendly.com/crosbybi/15min" target="_blank" class="cta-button">Schedule Your Free Consultation</a>
+                    <h1 data-key="heroTitle">Stop Guessing. Start Knowing.</h1>
+                    <p data-key="heroSubtitle">We transform your messy, scattered data into clear, automated Power BI dashboards that give you the confidence to grow your business.</p>
+                    <a href="https://calendly.com/crosbybi/15min" target="_blank" class="cta-button" data-key="heroCTA">Schedule Your Free Consultation</a>
                 </div>
                 <div class="hero-image">
                     <img src="images/cartoon-crosbybi.png" alt="Cartoon of a data expert transforming messy data into clear insights.">
@@ -375,20 +388,20 @@
         <!-- PROBLEM SECTION -->
         <section id="problem" class="section section-light">
             <div class="container">
-                <h2 class="section-title">Does This Sound Familiar?</h2>
-                <p class="section-subtitle">Many businesses feel like they're flying blind, unable to get the answers they need from the data they already have.</p>
+                <h2 class="section-title" data-key="problemTitle">Does This Sound Familiar?</h2>
+                <p class="section-subtitle" data-key="problemSubtitle">Many businesses feel like they're flying blind, unable to get the answers they need from the data they already have.</p>
                 <div class="problem-grid">
                     <div class="problem-item">
-                        <h3>Wasted Hours</h3>
-                        <p>You and your team spend countless hours manually exporting, cleaning, and compiling data for weekly or monthly reports.</p>
+                        <h3 data-key="problem1Title">Wasted Hours</h3>
+                        <p data-key="problem1Desc">You and your team spend countless hours manually exporting, cleaning, and compiling data for weekly or monthly reports.</p>
                     </div>
                     <div class="problem-item">
-                        <h3>Scattered Data</h3>
-                        <p>Your information is spread across spreadsheets, software, and different departments, making a single source of truth impossible.</p>
+                        <h3 data-key="problem2Title">Scattered Data</h3>
+                        <p data-key="problem2Desc">Your information is spread across spreadsheets, software, and different departments, making a single source of truth impossible.</p>
                     </div>
                     <div class="problem-item">
-                        <h3>Risky Guesswork</h3>
-                        <p>You're forced to make critical business decisions based on gut feelings or incomplete data, hoping you're right.</p>
+                        <h3 data-key="problem3Title">Risky Guesswork</h3>
+                        <p data-key="problem3Desc">You're forced to make critical business decisions based on gut feelings or incomplete data, hoping you're right.</p>
                     </div>
                 </div>
             </div>
@@ -397,23 +410,23 @@
         <!-- PLAN SECTION -->
         <section id="plan" class="section section-dark">
             <div class="container">
-                <h2 class="section-title">Your 3-Step Plan to Data Clarity</h2>
-                <p class="section-subtitle">We make it simple to go from data chaos to data-driven confidence.</p>
+                <h2 class="section-title" data-key="planTitle">Your 3-Step Plan to Data Clarity</h2>
+                <p class="section-subtitle" data-key="planSubtitle">We make it simple to go from data chaos to data-driven confidence.</p>
                 <div class="plan-steps">
                     <div class="step">
                         <div class="step-number">1.</div>
-                        <h3>Schedule a Call</h3>
-                        <p>Book a free, no-obligation consultation to discuss your business goals and data challenges.</p>
+                        <h3 data-key="plan1Title">Schedule a Call</h3>
+                        <p data-key="plan1Desc">Book a free, no-obligation consultation to discuss your business goals and data challenges.</p>
                     </div>
                     <div class="step">
                         <div class="step-number">2.</div>
-                        <h3>Get a Custom Plan</h3>
-                        <p>We'll outline a clear project plan, whether it's for a custom dashboard, training, or advisory.</p>
+                        <h3 data-key="plan2Title">Get a Custom Plan</h3>
+                        <p data-key="plan2Desc">We'll outline a clear project plan, whether it's for a custom dashboard, training, or advisory.</p>
                     </div>
                     <div class="step">
                         <div class="step-number">3.</div>
-                        <h3>Transform Your Data</h3>
-                        <p>We get to work, turning your raw data into powerful insights you can use every day.</p>
+                        <h3 data-key="plan3Title">Transform Your Data</h3>
+                        <p data-key="plan3Desc">We get to work, turning your raw data into powerful insights you can use every day.</p>
                     </div>
                 </div>
             </div>
@@ -426,13 +439,13 @@
                     <img src="images/headshot.png" alt="Brandon Crosby, Founder of Crosby BI">
                 </div>
                 <div class="guide-text">
-                    <h3>Hi, I'm Brandon. I'm here to help.</h3>
-                    <p>I've spent years in the trenches of data analytics, and I know how frustrating it is to have valuable data you can't use. My passion is helping business professionals like you bridge that gap.</p>
-                    <p>I started Crosby BI to provide a clear, straightforward path for businesses to leverage their data, make smarter decisions, and focus on what they do best: growing.</p>
+                    <h3 data-key="guideTitle">Hi, I'm Brandon. I'm here to help.</h3>
+                    <p data-key="guideDesc1">I've spent years in the trenches of data analytics, and I know how frustrating it is to have valuable data you can't use. My passion is helping business professionals like you bridge that gap.</p>
+                    <p data-key="guideDesc2">I started Crosby BI to provide a clear, straightforward path for businesses to leverage their data, make smarter decisions, and focus on what they do best: growing.</p>
                     <div class="guide-links">
-                        <a href="https://www.linkedin.com/in/brandoncrosbyreyes" target="_blank">Connect on LinkedIn &rarr;</a>
-                        <a href="https://brandonreyes.netlify.app" target="_blank">View My Portfolio &rarr;</a>
-                        <a href="https://www.youtube.com/@crosbybiOfficial" target="_blank">Watch on YouTube &rarr;</a>
+                        <a href="https://www.linkedin.com/in/brandoncrosbyreyes" target="_blank" data-key="guideLink1">Connect on LinkedIn &rarr;</a>
+                        <a href="https://brandonreyes.netlify.app" target="_blank" data-key="guideLink2">View My Portfolio &rarr;</a>
+                        <a href="https://www.youtube.com/@crosbybiOfficial" target="_blank" data-key="guideLink3">Watch on YouTube &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -442,20 +455,20 @@
         <!-- SERVICES SECTION -->
         <section id="services" class="section section-dark">
             <div class="container">
-                <h2 class="section-title">How We Help</h2>
-                <p class="section-subtitle">We offer a range of services designed to meet you where you are on your data journey.</p>
+                <h2 class="section-title" data-key="servicesTitle">How We Help</h2>
+                <p class="section-subtitle" data-key="servicesSubtitle">We offer a range of services designed to meet you where you are on your data journey.</p>
                 <div class="services-grid">
                     <div class="service-card">
-                        <h3>Custom Dashboard Development</h3>
-                        <p>Our core offering. We build a complete, professional Power BI report from the ground up, tailored to your specific business needs and KPIs.</p>
+                        <h3 data-key="service1Title">Custom Dashboard Development</h3>
+                        <p data-key="service1Desc">Our core offering. We build a complete, professional Power BI report from the ground up, tailored to your specific business needs and KPIs.</p>
                     </div>
                     <div class="service-card">
-                        <h3>Expert Advisory Sessions</h3>
-                        <p>On-demand, hourly consulting to help you get unstuck. Perfect for solving a specific Power BI problem or getting a professional review of your work.</p>
+                        <h3 data-key="service2Title">Expert Advisory Sessions</h3>
+                        <p data-key="service2Desc">On-demand, hourly consulting to help you get unstuck. Perfect for solving a specific Power BI problem or getting a professional review of your work.</p>
                     </div>
                     <div class="service-card">
-                        <h3>Team Training Workshops</h3>
-                        <p>Upskill your team with live, hands-on training. We cover the fundamentals of Power BI to empower your team to build their own insights.</p>
+                        <h3 data-key="service3Title">Team Training Workshops</h3>
+                        <p data-key="service3Desc">Upskill your team with live, hands-on training. We cover the fundamentals of Power BI to empower your team to build their own insights.</p>
                     </div>
                 </div>
             </div>
@@ -466,24 +479,24 @@
         <!-- STAKES SECTION -->
         <section id="stakes" class="section section-light">
             <div class="container">
-                <h2 class="section-title">Choose Your Path Forward</h2>
+                <h2 class="section-title" data-key="stakesTitle">Choose Your Path Forward</h2>
                 <div class="stakes-grid">
                     <div class="stake-column stake-failure">
-                        <h3>Without a Clear Plan</h3>
+                        <h3 data-key="stakesFailTitle">Without a Clear Plan</h3>
                         <ul>
-                            <li>Continue wasting hours on manual reports.</li>
-                            <li>Make critical decisions based on guesswork.</li>
-                            <li>Remain frustrated by scattered, messy data.</li>
-                            <li>Fall behind data-driven competitors.</li>
+                            <li data-key="stakesFail1">Continue wasting hours on manual reports.</li>
+                            <li data-key="stakesFail2">Make critical decisions based on guesswork.</li>
+                            <li data-key="stakesFail3">Remain frustrated by scattered, messy data.</li>
+                            <li data-key="stakesFail4">Fall behind data-driven competitors.</li>
                         </ul>
                     </div>
                     <div class="stake-column stake-success">
-                        <h3>With Crosby BI as Your Guide</h3>
+                        <h3 data-key="stakesSuccessTitle">With Crosby BI as Your Guide</h3>
                         <ul>
-                            <li>Gain access to automated, real-time insights.</li>
-                            <li>Enable confident decisions backed by facts.</li>
-                            <li>Have a single source of truth for your KPIs.</li>
-                            <li>Focus your time on growth, not spreadsheets.</li>
+                            <li data-key="stakesSuccess1">Gain access to automated, real-time insights.</li>
+                            <li data-key="stakesSuccess2">Enable confident decisions backed by facts.</li>
+                            <li data-key="stakesSuccess3">Have a single source of truth for your KPIs.</li>
+                            <li data-key="stakesSuccess4">Focus your time on growth, not spreadsheets.</li>
                         </ul>
                     </div>
                 </div>
@@ -493,9 +506,9 @@
         <!-- FINAL CTA / CONTACT SECTION -->
         <section id="contact" class="section section-dark">
             <div class="container" style="text-align: center;">
-                <h2 class="section-title">Ready to Unlock the Power of Your Data?</h2>
-                <p class="section-subtitle">Stop letting valuable insights hide in messy spreadsheets. Let's build a solution that drives growth and saves you time.</p>
-                <a href="https://calendly.com/crosbybi/15min" target="_blank" class="cta-button">Schedule Your Free Consultation</a>
+                <h2 class="section-title" data-key="finalCtaTitle">Ready to Unlock the Power of Your Data?</h2>
+                <p class="section-subtitle" data-key="finalCtaSubtitle">Stop letting valuable insights hide in messy spreadsheets. Let's build a solution that drives growth and saves you time.</p>
+                <a href="https://calendly.com/crosbybi/15min" target="_blank" class="cta-button" data-key="finalCtaButton">Schedule Your Free Consultation</a>
             </div>
         </section>
 
@@ -506,12 +519,143 @@
         <div class="container">
             <p>&copy; 2025 Crosby BI. All Rights Reserved.</p>
             <p>
-                <a href="#services">Services</a> | 
-                <a href="#plan">Our Plan</a> | 
-                <a href="https://calendly.com/crosbybi/15min" target="_blank">Contact</a>
+                <a href="#services" data-key="footerServices">Services</a> | 
+                <a href="#plan" data-key="footerPlan">Our Plan</a> | 
+                <a href="https://calendly.com/crosbybi/15min" target="_blank" data-key="footerContact">Contact</a>
             </p>
         </div>
     </footer>
 
+    <script>
+        const translations = {
+            en: {
+                navServices: "Services",
+                navPlan: "Our Plan",
+                navContact: "Contact",
+                heroTitle: "Stop Guessing. Start Knowing.",
+                heroSubtitle: "We transform your messy, scattered data into clear, automated Power BI dashboards that give you the confidence to grow your business.",
+                heroCTA: "Schedule Your Free Consultation",
+                problemTitle: "Does This Sound Familiar?",
+                problemSubtitle: "Many businesses feel like they're flying blind, unable to get the answers they need from the data they already have.",
+                problem1Title: "Wasted Hours",
+                problem1Desc: "You and your team spend countless hours manually exporting, cleaning, and compiling data for weekly or monthly reports.",
+                problem2Title: "Scattered Data",
+                problem2Desc: "Your information is spread across spreadsheets, software, and different departments, making a single source of truth impossible.",
+                problem3Title: "Risky Guesswork",
+                problem3Desc: "You're forced to make critical business decisions based on gut feelings or incomplete data, hoping you're right.",
+                planTitle: "Your 3-Step Plan to Data Clarity",
+                planSubtitle: "We make it simple to go from data chaos to data-driven confidence.",
+                plan1Title: "Schedule a Call",
+                plan1Desc: "Book a free, no-obligation consultation to discuss your business goals and data challenges.",
+                plan2Title: "Get a Custom Plan",
+                plan2Desc: "We'll outline a clear project plan, whether it's for a custom dashboard, training, or advisory.",
+                plan3Title: "Transform Your Data",
+                plan3Desc: "We get to work, turning your raw data into powerful insights you can use every day.",
+                guideTitle: "Hi, I'm Brandon. I'm here to help.",
+                guideDesc1: "I've spent years in the trenches of data analytics, and I know how frustrating it is to have valuable data you can't use. My passion is helping business professionals like you bridge that gap.",
+                guideDesc2: "I started Crosby BI to provide a clear, straightforward path for businesses to leverage their data, make smarter decisions, and focus on what they do best: growing.",
+                guideLink1: "Connect on LinkedIn &rarr;",
+                guideLink2: "View My Portfolio &rarr;",
+                guideLink3: "Watch on YouTube &rarr;",
+                servicesTitle: "How We Help",
+                servicesSubtitle: "We offer a range of services designed to meet you where you are on your data journey.",
+                service1Title: "Custom Dashboard Development",
+                service1Desc: "Our core offering. We build a complete, professional Power BI report from the ground up, tailored to your specific business needs and KPIs.",
+                service2Title: "Expert Advisory Sessions",
+                service2Desc: "On-demand, hourly consulting to help you get unstuck. Perfect for solving a specific Power BI problem or getting a professional review of your work.",
+                service3Title: "Team Training Workshops",
+                service3Desc: "Upskill your team with live, hands-on training. We cover the fundamentals of Power BI to empower your team to build their own insights.",
+                stakesTitle: "Choose Your Path Forward",
+                stakesFailTitle: "Without a Clear Plan",
+                stakesFail1: "Continue wasting hours on manual reports.",
+                stakesFail2: "Make critical decisions based on guesswork.",
+                stakesFail3: "Remain frustrated by scattered, messy data.",
+                stakesFail4: "Fall behind data-driven competitors.",
+                stakesSuccessTitle: "With Crosby BI as Your Guide",
+                stakesSuccess1: "Gain access to automated, real-time insights.",
+                stakesSuccess2: "Enable confident decisions backed by facts.",
+                stakesSuccess3: "Have a single source of truth for your KPIs.",
+                stakesSuccess4: "Focus your time on growth, not spreadsheets.",
+                finalCtaTitle: "Ready to Unlock the Power of Your Data?",
+                finalCtaSubtitle: "Stop letting valuable insights hide in messy spreadsheets. Let's build a solution that drives growth and saves you time.",
+                finalCtaButton: "Schedule Your Free Consultation",
+                footerServices: "Services",
+                footerPlan: "Our Plan",
+                footerContact: "Contact",
+            },
+            es: {
+                navServices: "Servicios",
+                navPlan: "Nuestro Plan",
+                navContact: "Contacto",
+                heroTitle: "Deje de Adivinar. Empiece a Saber.",
+                heroSubtitle: "Transformamos sus datos desordenados y dispersos en paneles de Power BI claros, automatizados e interactivos que le dan la confianza para hacer crecer su negocio.",
+                heroCTA: "Programe su Consulta Gratuita",
+                problemTitle: "¿Le Suena Familiar?",
+                problemSubtitle: "Muchas empresas sienten que vuelan a ciegas, incapaces de obtener las respuestas que necesitan de los datos que ya tienen.",
+                problem1Title: "Horas Perdidas",
+                problem1Desc: "Usted y su equipo pasan incontables horas exportando, limpiando y compilando datos manualmente para informes semanales o mensuales.",
+                problem2Title: "Datos Dispersos",
+                problem2Desc: "Su información está repartida en hojas de cálculo, software y diferentes departamentos, lo que hace imposible tener una única fuente de verdad.",
+                problem3Title: "Suposiciones Arriesgadas",
+                problem3Desc: "Se ve obligado a tomar decisiones comerciales críticas basándose en la intuición o en datos incompletos, esperando tener razón.",
+                planTitle: "Su Plan de 3 Pasos hacia la Claridad de Datos",
+                planSubtitle: "Hacemos que pasar del caos de datos a la confianza basada en datos sea sencillo.",
+                plan1Title: "Programe una Llamada",
+                plan1Desc: "Reserve una consulta gratuita y sin compromiso para discutir sus objetivos comerciales y desafíos de datos.",
+                plan2Title: "Obtenga un Plan Personalizado",
+                plan2Desc: "Delinearemos un plan de proyecto claro, ya sea para un panel personalizado, capacitación o asesoría.",
+                plan3Title: "Transforme sus Datos",
+                plan3Desc: "Nos ponemos a trabajar, convirtiendo sus datos brutos en información valiosa que puede usar todos los días.",
+                guideTitle: "Hola, soy Brandon. Estoy aquí para ayudar.",
+                guideDesc1: "He pasado años en las trincheras del análisis de datos y sé lo frustrante que es tener datos valiosos que no puede usar. Mi pasión es ayudar a profesionales como usted a cerrar esa brecha.",
+                guideDesc2: "Inicié Crosby BI para proporcionar un camino claro y directo para que las empresas aprovechen sus datos, tomen decisiones más inteligentes y se centren en lo que mejor saben hacer: crecer.",
+                guideLink1: "Conectar en LinkedIn &rarr;",
+                guideLink2: "Ver Mi Portafolio &rarr;",
+                guideLink3: "Ver en YouTube &rarr;",
+                servicesTitle: "Cómo Ayudamos",
+                servicesSubtitle: "Ofrecemos una gama de servicios diseñados para encontrarlo en el punto en que se encuentre en su viaje de datos.",
+                service1Title: "Desarrollo de Paneles Personalizados",
+                service1Desc: "Nuestra oferta principal. Construimos un informe completo y profesional de Power BI desde cero, adaptado a sus necesidades comerciales y KPIs específicos.",
+                service2Title: "Sesiones de Asesoría Experta",
+                service2Desc: "Consultoría por hora y bajo demanda para ayudarlo a desatascarse. Perfecto para resolver un problema específico de Power BI o para obtener una revisión profesional de su trabajo.",
+                service3Title: "Talleres de Capacitación para Equipos",
+                service3Desc: "Mejore las habilidades de su equipo con capacitación práctica en vivo. Cubrimos los fundamentos de Power BI para capacitar a su equipo para que construyan sus propias perspectivas.",
+                stakesTitle: "Elija su Camino a Seguir",
+                stakesFailTitle: "Sin un Plan Claro",
+                stakesFail1: "Continuar perdiendo horas en informes manuales.",
+                stakesFail2: "Tomar decisiones críticas basadas en suposiciones.",
+                stakesFail3: "Seguir frustrado por datos dispersos y desordenados.",
+                stakesFail4: "Quedarse atrás de los competidores basados en datos.",
+                stakesSuccessTitle: "Con Crosby BI como su Guía",
+                stakesSuccess1: "Obtener acceso a información automatizada y en tiempo real.",
+                stakesSuccess2: "Permitir decisiones seguras respaldadas por hechos.",
+                stakesSuccess3: "Tener una única fuente de verdad para sus KPIs.",
+                stakesSuccess4: "Enfocar su tiempo en el crecimiento, no en hojas de cálculo.",
+                finalCtaTitle: "¿Listo para Desbloquear el Poder de sus Datos?",
+                finalCtaSubtitle: "Deje de permitir que información valiosa se esconda en hojas de cálculo desordenadas. Construyamos una solución que impulse el crecimiento y le ahorre tiempo.",
+                finalCtaButton: "Programe su Consulta Gratuita",
+                footerServices: "Servicios",
+                footerPlan: "Nuestro Plan",
+                footerContact: "Contacto",
+            }
+        };
+
+        const setLanguage = (lang) => {
+            document.documentElement.lang = lang;
+            localStorage.setItem('crosbybi_lang', lang);
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+        };
+
+        // On page load, check for saved language or default to English
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('crosbybi_lang') || 'en';
+            setLanguage(savedLang);
+        });
+    </script>
 </body>
 </html>
