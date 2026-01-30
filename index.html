@@ -177,7 +177,6 @@
             margin-bottom: 15px;
             color: var(--primary-color);
         }
-
         .section-subtitle {
             text-align: center;
             font-size: 1.2em;
@@ -186,190 +185,241 @@
             color: #555;
         }
 
-        /* --- Problem Section --- */
-        .problem-grid {
+        /* Stakes Section */
+        .stakes-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .stake-column {
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .stake-failure {
+            background-color: #fff0f0;
+            border-left: 5px solid #e53e3e;
+        }
+
+        .stake-success {
+            background-color: #f0fff4;
+            border-left: 5px solid #38a169;
+        }
+
+        .stake-column h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .stake-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .stake-column li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .stake-column li::before {
+            margin-right: 10px;
+        }
+
+        .stake-failure li::before {
+            content: '❌';
+            color: #e53e3e;
+        }
+
+        .stake-success li::before {
+            content: '✅';
+            color: #38a169;
+        }
+
+        /* Final CTA Section */
+        #contact {
+            text-align: center;
+        }
+
+        #contact .section-subtitle {
+            max-width: 600px;
+        }
+
+        .cta-button {
+            background-color: #FF6B35;
+            color: white;
+            padding: 15px 35px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #FF5722;
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Problem Section */
+        .problem-grid {
+            display: flex;
+            justify-content: space-between;
             gap: 30px;
             text-align: center;
+        }
+
+        .problem-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .problem-item h3 {
-            color: var(--secondary-color);
+            color: #2075A9; /* Specific blue color from the screenshot */
+            margin-bottom: 15px;
+            font-size: 1.5em;
         }
 
-        /* --- Plan Section --- */
+        .problem-item p {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Plan Section */
         .plan-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
             text-align: center;
         }
 
+        .step {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .step-number {
-            font-size: 3em;
-            font-weight: bold;
-            color: var(--secondary-color);
-            opacity: 0.3;
+            font-size: 4em;
+            color: #B3D1E8;  /* Light blue color for numbers */
+            margin-bottom: 20px;
         }
 
-        /* --- Services Section --- */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+        .step h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
         }
 
-        .service-card {
-            background: var(--bg-white);
-            border: 1px solid #eee;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            transition: transform 0.2s, box-shadow 0.2s;
+        .step p {
+            color: #333;
+            line-height: 1.6;
         }
 
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-
-        .service-card h3 {
-            color: var(--secondary-color);
-            margin-top: 0;
-        }
-
-        /* --- Guide Section --- */
+        /* Guide Section */
         .guide-section {
             display: flex;
             align-items: center;
             gap: 50px;
         }
 
+        .guide-image {
+            flex: 0 0 250px;
+        }
+
         .guide-image img {
-            max-width: 250px; /* Control the size of the headshot */
-            border-radius: 50%; /* Makes the image circular */
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #2075A9;
+        }
+
+        .guide-text {
+            flex: 1;
         }
 
         .guide-text h3 {
-            font-size: 1.8em;
             color: var(--primary-color);
-            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .guide-text p {
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 15px;
         }
 
         .guide-links {
-            margin-top: 20px;
             display: flex;
-            gap: 25px;
-            flex-wrap: wrap;
+            gap: 20px;
         }
 
-        .guide-text a {
-            font-weight: bold;
-            color: var(--secondary-color);
+        .guide-links a {
+            color: #2075A9;
             text-decoration: none;
-            transition: opacity 0.2s;
-            white-space: nowrap;
+            font-weight: bold;
         }
 
-        .guide-text a:hover {
-            opacity: 0.8;
+        .guide-links a:hover {
             text-decoration: underline;
         }
-        /* Responsive adjustments for the guide section */
-        @media (max-width: 768px) {
-            .guide-section {
-                flex-direction: column;
-                text-align: center;
-            }
-            .guide-image {
-                margin-bottom: 30px;
-            }
-            .guide-links {
-                justify-content: center;
-            }
-        }
 
-        /* --- Stakes Section --- */
-        .stakes-grid {
+        /* Services Section */
+        .services-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .stake-column {
-            padding: 30px;
-            border-radius: 8px;
-        }
-        .stake-failure {
-            background-color: #fff0f0;
-            border-left: 5px solid #e53e3e;
-        }
-        .stake-success {
-            background-color: #f0fff4;
-            border-left: 5px solid #38a169;
-        }
-        .stake-column h3 {
-            margin-top: 0;
-        }
-        .stake-column ul {
-            list-style: none;
-            padding: 0;
-        }
-        .stake-column li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: flex-start;
-        }
-        .stake-column li::before {
-            margin-right: 10px;
-            font-weight: bold;
-        }
-        .stake-failure li::before { content: '❌'; }
-        .stake-success li::before { content: '✅'; }
-        @media (max-width: 768px) {
-            .stakes-grid { grid-template-columns: 1fr; }
-        }
-
-        /* --- Testimonials --- */
-        .testimonial {
-            background: var(--primary-color);
-            color: white;
-            padding: 40px;
-            border-radius: 8px;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
         }
 
-        .testimonial-card {
-            background: var(--bg-light);
-            border: 1px solid #eee;
-            padding: 30px;
+        .service-card {
+            background: white;
+            border: 1px solid #e0e0e0;
             border-radius: 8px;
+            padding: 30px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
         }
 
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
 
-        .testimonial-text {
+        .service-card h3 {
+            color: #2075A9;
+            margin-bottom: 15px;
             font-size: 1.3em;
-            font-style: italic;
-            margin-bottom: 20px;
         }
 
-        .testimonial-author {
-            font-weight: bold;
-            opacity: 0.8;
+        .service-card p {
+            color: #333;
+            line-height: 1.6;
         }
 
         /* --- Footer --- */
@@ -398,9 +448,9 @@
                     <a href="#plan" data-key="navPlan">Our Plan</a>
                     <a href="#contact" data-key="navContact">Contact</a>
                 </nav>
-                <div class="lang-switcher">
-                    <a href="#" onclick="setLanguage('en')">EN</a> | <a href="#" onclick="setLanguage('es')">ES</a>
-                </div>
+                 <div class="lang-switcher">
+                     <a href="#" onclick="setLanguage('en')">EN</a> | <a href="#" onclick="setLanguage('es')">ES</a>
+                 </div>
             </div>
         </div>
     </header>
@@ -412,7 +462,7 @@
                 <div class="hero-text">
                     <h1 data-key="heroTitle">Stop Guessing. Start Knowing.</h1>
                     <p data-key="heroSubtitle">We transform your messy, scattered data into clear, automated Power BI dashboards that give you the confidence to grow your business.</p>
-                    <a href="https://calendly.com/crosbybi/15min" target="_blank" class="cta-button" data-key="heroCTA">Schedule Your Free Consultation</a>
+                      <a href="https://calendly.com/crosbybi/15min" target="_blank" class="cta-button" data-key="heroCTA">Schedule Your Free Consultation</a>
                 </div>
                 <div class="hero-image">
                     <img src="images/cartoon-crosbybi.png" alt="Cartoon of a data expert transforming messy data into clear insights.">
@@ -478,9 +528,9 @@
                     <p data-key="guideDesc1">I've spent years in the trenches of data analytics, and I know how frustrating it is to have valuable data you can't use. My passion is helping business professionals like you bridge that gap.</p>
                     <p data-key="guideDesc2">I started Crosby BI to provide a clear, straightforward path for businesses to leverage their data, make smarter decisions, and focus on what they do best: growing.</p>
                     <div class="guide-links">
-                        <a href="https://www.linkedin.com/in/brandoncrosbyreyes" target="_blank" data-key="guideLink1">Connect on LinkedIn &rarr;</a>
-                        <a href="https://brandonreyes.netlify.app" target="_blank" data-key="guideLink2">View My Portfolio &rarr;</a>
-                        <a href="https://www.youtube.com/@crosbybiOfficial" target="_blank" data-key="guideLink3">Watch on YouTube &rarr;</a>
+                          <a href="https://www.linkedin.com/in/brandoncrosbyreyes" target="_blank" data-key="guideLink1">Connect on LinkedIn →</a>
+                          <a href="https://brandonreyes.netlify.app" target="_blank" data-key="guideLink2">View My Portfolio →</a>
+                          <a href="https://www.youtube.com/@crosbybiOfficial" target="_blank" data-key="guideLink3">Watch on YouTube →</a>
                     </div>
                 </div>
             </div>
@@ -540,7 +590,7 @@
 
         <!-- FINAL CTA / CONTACT SECTION -->
         <section id="contact" class="section section-dark">
-            <div class="container" style="text-align: center;">
+            <div class="container">
                 <h2 class="section-title" data-key="finalCtaTitle">Ready to Unlock the Power of Your Data?</h2>
                 <p class="section-subtitle" data-key="finalCtaSubtitle">Stop letting valuable insights hide in messy spreadsheets. Let's build a solution that drives growth and saves you time.</p>
                 <a href="https://calendly.com/crosbybi/15min" target="_blank" class="cta-button" data-key="finalCtaButton">Schedule Your Free Consultation</a>
@@ -681,6 +731,7 @@
             document.querySelectorAll('[data-key]').forEach(element => {
                 const key = element.getAttribute('data-key');
                 if (translations[lang] && translations[lang][key]) {
+                    // Use textContent for buttons to preserve HTML entities like &rarr;
                     element.innerHTML = translations[lang][key];
                 }
             });
