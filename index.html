@@ -1,747 +1,702 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crosby BI | Power BI Consulting & Dashboard Development</title>
-    <meta name="description" content="Crosby BI transforms your messy data into clear, automated Power BI dashboards so you can stop guessing and make decisions with confidence.">
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PTYLY5EW12"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-PTYLY5EW12');
-    </script>
-
-    <style>
-        :root {
-            --primary-color: #0D2F4F; /* Dark Sapphire - for backgrounds and text */
-            --secondary-color: #2075A9; /* Lapis Lazuli - for highlights and subheadings */
-            --accent-color: #FF6B35; /* Pumpkin Orange - for buttons and calls to action */
-            --text-color: #333333;
-            --bg-light: #f8f9fa;
-            --bg-white: #ffffff;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            color: var(--text-color);
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* --- Header & Hero --- */
-        .header {
-            background-color: #ffffff;
-            padding: 15px 0;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo img {
-            max-height: 55px; /* Adjust this value to fit your logo's dimensions */
-            width: auto;
-            vertical-align: middle; /* Aligns the image nicely with the nav links */
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .nav-right {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-            }
-            .nav-links {
-                display: flex;
-                flex-direction: column;
-                gap: 15px;
-            }
-            .nav-links a { margin-left: 0; }
-            .lang-switcher { margin-left: 0; }
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-links {
-            display: flex; /* Ensures consistent flex behavior */
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--primary-color);
-            text-decoration: none;
-            margin-left: 25px;
-            font-weight: 500;
-        }
-        .lang-switcher {
-            margin-left: 30px;
-        }
-
-        .hero {
-            background: var(--primary-color);
-            color: var(--bg-white);
-            padding: 80px 0;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            gap: 60px;
-        }
-
-        .hero-text {
-            text-align: left;
-        }
-
-        .hero-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .hero h1 {
-            font-size: 3.5em;
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            font-size: 1.3em;
-            max-width: 700px;
-            margin: 0 auto 30px auto;
-            opacity: 0.9;
-        }
-
-        @media (max-width: 900px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            .hero-text { text-align: center; }
-        }
-
-        .cta-button {
-            background-color: var(--accent-color);
-            color: var(--bg-white);
-            padding: 15px 35px;
-            font-size: 1.1em;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: transform 0.2s ease;
-            display: inline-block;
-        }
-
-        .cta-button:hover {
-            transform: scale(1.05);
-        }
-
-        /* --- Sections --- */
-        .section {
-            padding: 80px 0;
-        }
-
-        .section-light {
-            background-color: var(--bg-white);
-        }
-
-        .section-dark {
-            background-color: var(--bg-light);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.2em;
-            max-width: 700px;
-            margin: 0 auto 60px auto;
-            color: #555;
-        }
-
-        /* Stakes Section */
-        .stakes-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .stake-column {
-            padding: 30px;
-            border-radius: 8px;
-        }
-
-        .stake-failure {
-            background-color: #fff0f0;
-            border-left: 5px solid #e53e3e;
-        }
-
-        .stake-success {
-            background-color: #f0fff4;
-            border-left: 5px solid #38a169;
-        }
-
-        .stake-column h3 {
-            margin-top: 0;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-
-        .stake-column ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .stake-column li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .stake-column li::before {
-            margin-right: 10px;
-        }
-
-        .stake-failure li::before {
-            content: '❌';
-            color: #e53e3e;
-        }
-
-        .stake-success li::before {
-            content: '✅';
-            color: #38a169;
-        }
-
-        /* Final CTA Section */
-        #contact {
-            text-align: center;
-        }
-
-        #contact .section-subtitle {
-            max-width: 600px;
-        }
-
-        .cta-button {
-            background-color: #FF6B35;
-            color: white;
-            padding: 15px 35px;
-            font-size: 1.1em;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        .cta-button:hover {
-            background-color: #FF5722;
-            transform: scale(1.05);
-        }
-
-        /* Footer */
-        .footer {
-            background-color: #222;
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
-        }
-
-        .footer a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Problem Section */
-        .problem-grid {
-            display: flex;
-            justify-content: space-between;
-            gap: 30px;
-            text-align: center;
-        }
-
-        .problem-item {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .problem-item h3 {
-            color: #2075A9; /* Specific blue color from the screenshot */
-            margin-bottom: 15px;
-            font-size: 1.5em;
-        }
-
-        .problem-item p {
-            color: #333;
-            line-height: 1.6;
-        }
-
-        /* Plan Section */
-        .plan-steps {
-            display: flex;
-            justify-content: space-between;
-            gap: 30px;
-            text-align: center;
-        }
-
-        .step {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .step-number {
-            font-size: 4em;
-            color: #B3D1E8;  /* Light blue color for numbers */
-            margin-bottom: 20px;
-        }
-
-        .step h3 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-
-        .step p {
-            color: #333;
-            line-height: 1.6;
-        }
-
-        /* Guide Section */
-        .guide-section {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .guide-image {
-            flex: 0 0 250px;
-        }
-
-        .guide-image img {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            object-fit: cover;
-            background-color: #2075A9;
-        }
-
-        .guide-text {
-            flex: 1;
-        }
-
-        .guide-text h3 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-
-        .guide-text p {
-            color: #333;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        .guide-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .guide-links a {
-            color: #2075A9;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .guide-links a:hover {
-            text-decoration: underline;
-        }
-
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .service-card {
-            background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-        }
-
-        .service-card h3 {
-            color: #2075A9;
-            margin-bottom: 15px;
-            font-size: 1.3em;
-        }
-
-        .service-card p {
-            color: #333;
-            line-height: 1.6;
-        }
-
-        /* --- Footer --- */
-        .footer {
-            background-color: var(--text-color);
-            color: var(--bg-light);
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .footer a {
-            color: var(--bg-light);
-            margin: 0 10px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crosby BI | Power BI consulting and dashboard development</title>
+<meta name="description" content="Crosby BI builds Power BI reports that replace manual spreadsheet reporting for finance, operations and public-sector teams. See live reports and book a free 15-minute call.">
+<meta property="og:title" content="Crosby BI | Power BI consulting">
+<meta property="og:description" content="Power BI reports that replace manual spreadsheet reporting. See live reports and book a free 15-minute call.">
+<meta property="og:image" content="https://www.crosbybi.com/images/work-budget.webp">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="images/favicon.png">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PTYLY5EW12"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PTYLY5EW12');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper: #ffffff;
+  --mist: #eef2f5;
+  --ink: #14202b;
+  --muted: #51606e;
+  --rule: #c9d2da;
+  --navy: #0d2f4f;
+  --blue: #1f6fa3;
+  --orange: #ff6b35;
+  --on-navy: #ffffff;
+  --on-navy-muted: #c4d3e0;
+  --frame: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0f1a24;
+    --mist: #16242f;
+    --ink: #eef2f5;
+    --muted: #a7b4c0;
+    --rule: #33434f;
+    --navy: #0a2540;
+    --blue: #6fb3e0;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0f1a24;
+  --mist: #16242f;
+  --ink: #eef2f5;
+  --muted: #a7b4c0;
+  --rule: #33434f;
+  --navy: #0a2540;
+  --blue: #6fb3e0;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Archivo", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  font-variation-settings: "wdth" 100;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--blue); text-underline-offset: 0.18em; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 2px;
+}
+h1, h2, h3, p { margin: 0; }
+
+.wrap {
+  max-width: 1120px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (min-width: 720px) {
+  .wrap { padding-left: max(32px, env(safe-area-inset-left, 0px)); padding-right: max(32px, env(safe-area-inset-right, 0px)); }
+}
+
+.skip {
+  position: absolute; left: -999px; top: 0;
+  background: var(--ink); color: var(--paper); padding: 10px 14px; z-index: 10;
+}
+.skip:focus { left: 8px; top: 8px; }
+
+/* Header */
+.top { border-bottom: 1px solid var(--rule); }
+.top-row {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px 24px; flex-wrap: wrap; padding-top: 12px; padding-bottom: 12px;
+}
+.brand {
+  display: flex; align-items: center; gap: 10px;
+  color: var(--ink); text-decoration: none;
+  font-weight: 700; font-size: 1.15rem; font-variation-settings: "wdth" 112;
+}
+.brand img { width: 44px; height: auto; background: #fff; padding: 3px; }
+.top-nav { display: flex; align-items: center; gap: 4px 20px; flex-wrap: wrap; }
+.top-nav a { color: var(--ink); text-decoration: none; font-weight: 500; padding: 6px 0; }
+.top-nav a:hover { text-decoration: underline; }
+.lang { display: flex; border: 1px solid var(--rule); }
+.lang button {
+  font: inherit; font-size: 0.875rem; font-weight: 600;
+  background: none; color: var(--muted); border: 0; padding: 5px 10px; cursor: pointer;
+}
+.lang button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+
+/* Buttons */
+.btn {
+  display: inline-block; font: inherit; font-weight: 700;
+  padding: 14px 22px; border: 2px solid transparent; cursor: pointer;
+  text-decoration: none; text-align: center;
+}
+.btn-main { background: var(--orange); color: #14202b; }
+.btn-main:hover { background: #ff8256; }
+.btn-plain { border-color: var(--ink); color: var(--ink); background: none; }
+.btn-plain:hover { background: var(--ink); color: var(--paper); }
+
+/* Hero */
+.hero { padding-top: 48px; }
+.hero h1 {
+  font-weight: 800;
+  font-variation-settings: "wdth" 125;
+  font-size: clamp(2.5rem, 10.5vw, 6rem);
+  line-height: 0.96;
+  letter-spacing: -0.025em;
+}
+.hero h1 span { display: block; }
+.hero-lede {
+  margin-top: 24px; max-width: 34em;
+  font-size: clamp(1.125rem, 2.2vw, 1.35rem); line-height: 1.45;
+}
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.shot { margin: 40px 0 0; }
+.shot a { display: block; border: 1px solid var(--rule); background: var(--frame); padding: 8px; }
+.shot figcaption { margin-top: 10px; font-size: 0.9375rem; color: var(--muted); }
+@media (max-width: 559px) { .shot img { width: 100%; aspect-ratio: 5 / 4; object-fit: cover; object-position: left top; } }
+@media (min-width: 720px) { .hero { padding-top: 72px; } .shot { margin-top: 56px; } .shot a { padding: 16px; } }
+
+/* Facts */
+.facts { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: 1fr; }
+.facts li { padding: 14px 0; border-top: 1px solid var(--rule); font-weight: 600; line-height: 1.35; }
+.facts li small { display: block; font-size: 0.9375rem; font-weight: 400; color: var(--muted); }
+@media (min-width: 720px) {
+  .facts { grid-template-columns: repeat(4, 1fr); gap: 0 24px; }
+  .facts li { border-top: 2px solid var(--ink); }
+}
+
+/* Sections */
+.band { padding: 64px 0; }
+@media (min-width: 720px) { .band { padding: 96px 0; } }
+.band-mist { background: var(--mist); }
+.band h2 {
+  font-weight: 800; font-variation-settings: "wdth" 118;
+  font-size: clamp(1.75rem, 5vw, 2.75rem); line-height: 1.08; letter-spacing: -0.015em;
+  max-width: 18em;
+}
+.band-intro { margin-top: 14px; max-width: 38em; color: var(--muted); font-size: 1.125rem; }
+
+/* Problems */
+.pains { display: grid; gap: 28px; margin-top: 40px; }
+.pains h3 { font-size: 1.2rem; font-weight: 700; line-height: 1.25; }
+.pains p { margin-top: 8px; color: var(--muted); }
+@media (min-width: 720px) { .pains { grid-template-columns: repeat(3, 1fr); gap: 40px; } }
+
+/* Work */
+.case { display: grid; gap: 20px; padding: 32px 0; border-top: 2px solid var(--ink); }
+.case:first-of-type { margin-top: 40px; }
+.case-title { font-size: 1.0625rem; line-height: 1.35; font-weight: 400; }
+.case-title b { display: block; font-size: 1.4rem; font-weight: 700; line-height: 1.2; }
+.case-text p { margin-top: 12px; color: var(--muted); }
+.case-text .case-link { color: var(--blue); font-weight: 600; }
+.case-shot { border: 1px solid var(--rule); background: var(--frame); padding: 6px; display: block; }
+@media (min-width: 860px) {
+  .case { grid-template-columns: 4fr 7fr; gap: 48px; padding: 40px 0; align-items: start; }
+}
+
+/* Services */
+.services { margin: 40px 0 0; padding: 0; }
+.service { display: grid; gap: 6px; padding: 20px 0; border-top: 1px solid var(--rule); }
+.service dt { font-weight: 700; font-size: 1.2rem; line-height: 1.25; }
+.service dd { margin: 0; color: var(--muted); }
+.service .price { color: var(--ink); font-weight: 600; }
+@media (min-width: 860px) { .service { grid-template-columns: 3fr 6fr 3fr; gap: 32px; } .service .price { text-align: right; } }
+.services-note { margin-top: 24px; font-weight: 600; max-width: 38em; }
+
+/* Steps */
+.steps { list-style: none; counter-reset: step; margin: 40px 0 0; padding: 0; display: grid; gap: 28px; }
+.steps li { counter-increment: step; border-top: 2px solid var(--ink); padding-top: 14px; }
+.steps li::before {
+  content: counter(step); display: block;
+  font-weight: 800; font-variation-settings: "wdth" 125; font-size: 2.5rem; line-height: 1;
+}
+.steps h3 { margin-top: 10px; font-size: 1.2rem; font-weight: 700; }
+.steps p { margin-top: 6px; color: var(--muted); }
+@media (min-width: 720px) { .steps { grid-template-columns: repeat(3, 1fr); gap: 40px; } }
+
+/* About */
+.about { display: grid; gap: 28px; align-items: start; }
+.about img { width: 200px; height: 200px; object-fit: cover; }
+.about-text p { margin-top: 14px; max-width: 36em; }
+.about-links { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px 24px; font-weight: 600; }
+@media (min-width: 720px) { .about { grid-template-columns: 260px 1fr; gap: 56px; } .about img { width: 260px; height: 260px; } }
+
+/* Contact */
+.contact { background: var(--navy); color: var(--on-navy); }
+.contact h2 { color: var(--on-navy); }
+.contact .band-intro { color: var(--on-navy-muted); }
+.contact-grid { display: grid; gap: 40px; margin-top: 36px; }
+@media (min-width: 860px) { .contact-grid { grid-template-columns: 7fr 4fr; gap: 64px; } }
+form { display: grid; gap: 16px; }
+.field label { display: block; font-weight: 600; margin-bottom: 6px; }
+.field .opt { font-weight: 400; color: var(--on-navy-muted); }
+.field input, .field select, .field textarea {
+  width: 100%; font: inherit; font-size: 1rem; color: #14202b; background: #ffffff;
+  border: 1px solid #ffffff; padding: 12px; border-radius: 0;
+}
+.field textarea { min-height: 140px; resize: vertical; }
+.two { display: grid; gap: 16px; }
+@media (min-width: 560px) { .two { grid-template-columns: 1fr 1fr; } }
+.trap { position: absolute; left: -9999px; }
+.form-status { min-height: 1.5em; font-weight: 600; }
+.form-status.bad { color: #ffd0bf; }
+.aside h3 { font-size: 1.2rem; font-weight: 700; }
+.aside p { margin-top: 8px; color: var(--on-navy-muted); }
+.aside .btn { margin-top: 16px; }
+.aside-block + .aside-block { margin-top: 36px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.25); }
+.contact a:not(.btn) { color: #ffffff; }
+
+/* Footer */
+.foot { padding: 28px 0 40px; font-size: 0.9375rem; color: var(--muted); }
+.foot-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; }
+.foot nav { display: flex; flex-wrap: wrap; gap: 6px 20px; }
+.foot a { color: var(--muted); }
+</style>
 </head>
 <body>
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
 
-    <!-- HEADER -->
-    <header class="header">
-        <div class="container navbar">
-            <a href="#" class="logo"><img src="images/Crosby BI Logo.png" alt="Crosby BI Logo"></a>
-            <div class="nav-right">
-                <nav class="nav-links">
-                    <a href="#services" data-key="navServices">Services</a>
-                    <a href="#plan" data-key="navPlan">Our Plan</a>
-                    <a href="#contact" data-key="navContact">Contact</a>
-                </nav>
-                 <div class="lang-switcher">
-                     <a href="#" onclick="setLanguage('en')">EN</a> | <a href="#" onclick="setLanguage('es')">ES</a>
-                 </div>
-            </div>
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="#top" aria-label="Crosby BI home">
+      <img src="images/logo-mark.png" alt="" width="432" height="351">
+      <span>Crosby BI</span>
+    </a>
+    <nav class="top-nav" aria-label="Main">
+      <a href="#work" data-i18n="navWork">Work</a>
+      <a href="#services" data-i18n="navServices">Services</a>
+      <a href="#about" data-i18n="navAbout">About</a>
+      <a href="#contact" data-i18n="navContact">Contact</a>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="es" aria-pressed="false">ES</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top">
+    <div class="wrap">
+      <h1><span data-i18n="heroA">Stop guessing.</span><span data-i18n="heroB">Start knowing.</span></h1>
+      <p class="hero-lede" data-i18n="heroLede">Crosby BI builds Power BI reports that replace manual spreadsheet reporting, so finance, operations and public-sector teams can compare budget and actuals without rebuilding the numbers every month.</p>
+      <div class="hero-actions">
+        <a class="btn btn-main" href="https://calendly.com/crosbybi/15min" target="_blank" rel="noopener" data-i18n="ctaCall">Book a free 15-minute call</a>
+        <a class="btn btn-plain" href="#work" data-i18n="ctaWork">See the work</a>
+      </div>
+
+      <figure class="shot">
+        <a href="https://app.powerbi.com/view?r=eyJrIjoiNGYzZTkzZDctZGE5OC00M2JhLThjZDUtZDBlZmYyNzBhNmU2IiwidCI6IjlkMmU0NWFkLWJmOTMtNDg5NS1iMjRiLTliYmQwMzY5OGE2MCJ9" target="_blank" rel="noopener">
+          <img src="images/work-budget.webp" width="1600" height="829" alt="Power BI report of the City of Laredo adopted budget, comparing prior year and actual amounts by fund with variance bars." data-i18n-alt="heroAlt">
+        </a>
+        <figcaption data-i18n="heroCap">The City of Laredo adopted budget, a public Power BI report I built. Select the image to open the live report.</figcaption>
+      </figure>
+
+      <ul class="facts">
+        <li><span data-i18n="fact1">Microsoft Certified</span><small data-i18n="fact1s">Power BI Data Analyst Associate (PL-300)</small></li>
+        <li><span data-i18n="fact2">Principal Consultant</span><small data-i18n="fact2s">P3 Adaptive, 2024 to 2025</small></li>
+        <li><span data-i18n="fact3">Data Officer</span><small data-i18n="fact3s">City of Laredo, 2020 to 2024</small></li>
+        <li><span data-i18n="fact4">Invited speaker</span><small data-i18n="fact4s">U.S. Census Bureau Opportunity Project Summit</small></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band" id="problems">
+    <div class="wrap">
+      <h2 data-i18n="painTitle">What usually brings people here</h2>
+      <div class="pains">
+        <div>
+          <h3 data-i18n="pain1">The monthly report takes days</h3>
+          <p data-i18n="pain1d">Someone exports, cleans and pastes the same data every week or month, and the report is out of date by the time it is finished.</p>
         </div>
-    </header>
-
-    <!-- HERO SECTION -->
-    <main>
-        <section class="hero">
-            <div class="container hero-grid">
-                <div class="hero-text">
-                    <h1 data-key="heroTitle">Stop Guessing. Start Knowing.</h1>
-                    <p data-key="heroSubtitle">We transform your messy, scattered data into clear, automated Power BI dashboards that give you the confidence to grow your business.</p>
-                      <a href="https://calendly.com/crosbybi/15min" target="_blank" class="cta-button" data-key="heroCTA">Schedule Your Free Consultation</a>
-                </div>
-                <div class="hero-image">
-                    <img src="images/cartoon-crosbybi.png" alt="Cartoon of a data expert transforming messy data into clear insights.">
-                </div>
-            </div>
-        </section>
-
-        <!-- PROBLEM SECTION -->
-        <section id="problem" class="section section-light">
-            <div class="container">
-                <h2 class="section-title" data-key="problemTitle">Does This Sound Familiar?</h2>
-                <p class="section-subtitle" data-key="problemSubtitle">Many businesses feel like they're flying blind, unable to get the answers they need from the data they already have.</p>
-                <div class="problem-grid">
-                    <div class="problem-item">
-                        <h3 data-key="problem1Title">Wasted Hours</h3>
-                        <p data-key="problem1Desc">You and your team spend countless hours manually exporting, cleaning, and compiling data for weekly or monthly reports.</p>
-                    </div>
-                    <div class="problem-item">
-                        <h3 data-key="problem2Title">Scattered Data</h3>
-                        <p data-key="problem2Desc">Your information is spread across spreadsheets, software, and different departments, making a single source of truth impossible.</p>
-                    </div>
-                    <div class="problem-item">
-                        <h3 data-key="problem3Title">Risky Guesswork</h3>
-                        <p data-key="problem3Desc">You're forced to make critical business decisions based on gut feelings or incomplete data, hoping you're right.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PLAN SECTION -->
-        <section id="plan" class="section section-dark">
-            <div class="container">
-                <h2 class="section-title" data-key="planTitle">Your 3-Step Plan to Data Clarity</h2>
-                <p class="section-subtitle" data-key="planSubtitle">We make it simple to go from data chaos to data-driven confidence.</p>
-                <div class="plan-steps">
-                    <div class="step">
-                        <div class="step-number">1.</div>
-                        <h3 data-key="plan1Title">Schedule a Call</h3>
-                        <p data-key="plan1Desc">Book a free, no-obligation consultation to discuss your business goals and data challenges.</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">2.</div>
-                        <h3 data-key="plan2Title">Get a Custom Plan</h3>
-                        <p data-key="plan2Desc">We'll outline a clear project plan, whether it's for a custom dashboard, training, or advisory.</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">3.</div>
-                        <h3 data-key="plan3Title">Transform Your Data</h3>
-                        <p data-key="plan3Desc">We get to work, turning your raw data into powerful insights you can use every day.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- GUIDE SECTION -->
-        <section id="guide" class="section section-light">
-            <div class="container guide-section">
-                <div class="guide-image">
-                    <img src="images/headshot.png" alt="Brandon Crosby, Founder of Crosby BI">
-                </div>
-                <div class="guide-text">
-                    <h3 data-key="guideTitle">Hi, I'm Brandon. I'm here to help.</h3>
-                    <p data-key="guideDesc1">I've spent years in the trenches of data analytics, and I know how frustrating it is to have valuable data you can't use. My passion is helping business professionals like you bridge that gap.</p>
-                    <p data-key="guideDesc2">I started Crosby BI to provide a clear, straightforward path for businesses to leverage their data, make smarter decisions, and focus on what they do best: growing.</p>
-                    <div class="guide-links">
-                          <a href="https://www.linkedin.com/in/brandoncrosbyreyes" target="_blank" data-key="guideLink1">Connect on LinkedIn →</a>
-                          <a href="https://brandonreyes.netlify.app" target="_blank" data-key="guideLink2">View My Portfolio →</a>
-                          <a href="https://www.youtube.com/@crosbybiOfficial" target="_blank" data-key="guideLink3">Watch on YouTube →</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- SERVICES SECTION -->
-        <section id="services" class="section section-dark">
-            <div class="container">
-                <h2 class="section-title" data-key="servicesTitle">How We Help</h2>
-                <p class="section-subtitle" data-key="servicesSubtitle">We offer a range of services designed to meet you where you are on your data journey.</p>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <h3 data-key="service1Title">Custom Dashboard Development</h3>
-                        <p data-key="service1Desc">Our core offering. We build a complete, professional Power BI report from the ground up, tailored to your specific business needs and KPIs.</p>
-                    </div>
-                    <div class="service-card">
-                        <h3 data-key="service2Title">Expert Advisory Sessions</h3>
-                        <p data-key="service2Desc">On-demand, hourly consulting to help you get unstuck. Perfect for solving a specific Power BI problem or getting a professional review of your work.</p>
-                    </div>
-                    <div class="service-card">
-                        <h3 data-key="service3Title">Team Training Workshops</h3>
-                        <p data-key="service3Desc">Upskill your team with live, hands-on training. We cover the fundamentals of Power BI to empower your team to build their own insights.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- TESTIMONIALS SECTION (Temporarily Hidden) -->
-
-        <!-- STAKES SECTION -->
-        <section id="stakes" class="section section-light">
-            <div class="container">
-                <h2 class="section-title" data-key="stakesTitle">Choose Your Path Forward</h2>
-                <div class="stakes-grid">
-                    <div class="stake-column stake-failure">
-                        <h3 data-key="stakesFailTitle">Without a Clear Plan</h3>
-                        <ul>
-                            <li data-key="stakesFail1">Continue wasting hours on manual reports.</li>
-                            <li data-key="stakesFail2">Make critical decisions based on guesswork.</li>
-                            <li data-key="stakesFail3">Remain frustrated by scattered, messy data.</li>
-                            <li data-key="stakesFail4">Fall behind data-driven competitors.</li>
-                        </ul>
-                    </div>
-                    <div class="stake-column stake-success">
-                        <h3 data-key="stakesSuccessTitle">With Crosby BI as Your Guide</h3>
-                        <ul>
-                            <li data-key="stakesSuccess1">Gain access to automated, up-to-date insights.</li>
-                            <li data-key="stakesSuccess2">Enable confident decisions backed by data.</li>
-                            <li data-key="stakesSuccess3">Have a single source of truth for your KPIs.</li>
-                            <li data-key="stakesSuccess4">Focus your time on growth, not spreadsheets.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FINAL CTA / CONTACT SECTION -->
-        <section id="contact" class="section section-dark">
-            <div class="container">
-                <h2 class="section-title" data-key="finalCtaTitle">Ready to Unlock the Power of Your Data?</h2>
-                <p class="section-subtitle" data-key="finalCtaSubtitle">Stop letting valuable insights hide in messy spreadsheets. Let's build a solution that drives growth and saves you time.</p>
-                <a href="https://calendly.com/crosbybi/15min" target="_blank" class="cta-button" data-key="finalCtaButton">Schedule Your Free Consultation</a>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Crosby BI. All Rights Reserved.</p>
-            <p>
-                <a href="#services" data-key="footerServices">Services</a> | 
-                <a href="#plan" data-key="footerPlan">Our Plan</a> | 
-                <a href="https://calendly.com/crosbybi/15min" target="_blank" data-key="footerContact">Contact</a>
-            </p>
+        <div>
+          <h3 data-i18n="pain2">The numbers don't match</h3>
+          <p data-i18n="pain2d">Data lives in spreadsheets, software and different departments, so two people can bring two different totals to the same meeting.</p>
         </div>
-    </footer>
+        <div>
+          <h3 data-i18n="pain3">Decisions wait on the data</h3>
+          <p data-i18n="pain3d">Budget overruns and trends show up late, because nobody can see actuals against plan until the reporting is done.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        const translations = {
-            en: {
-                navServices: "Services",
-                navPlan: "Our Plan",
-                navContact: "Contact",
-                heroTitle: "Stop Guessing. Start Knowing.",
-                heroSubtitle: "We transform your messy, scattered data into clear, automated Power BI dashboards that give you the confidence to grow your business.",
-                heroCTA: "Schedule Your Free Consultation",
-                problemTitle: "Does This Sound Familiar?",
-                problemSubtitle: "Many businesses feel like they're flying blind, unable to get the answers they need from the data they already have.",
-                problem1Title: "Wasted Hours",
-                problem1Desc: "You and your team spend countless hours manually exporting, cleaning, and compiling data for weekly or monthly reports.",
-                problem2Title: "Scattered Data",
-                problem2Desc: "Your information is spread across spreadsheets, software, and different departments, making a single source of truth impossible.",
-                problem3Title: "Risky Guesswork",
-                problem3Desc: "You're forced to make critical business decisions based on gut feelings or incomplete data, hoping you're right.",
-                planTitle: "Your 3-Step Plan to Data Clarity",
-                planSubtitle: "We make it simple to go from data chaos to data-driven confidence.",
-                plan1Title: "Schedule a Call",
-                plan1Desc: "Book a free, no-obligation consultation to discuss your business goals and data challenges.",
-                plan2Title: "Get a Custom Plan",
-                plan2Desc: "We'll outline a clear project plan, whether it's for a custom dashboard, training, or advisory.",
-                plan3Title: "Transform Your Data",
-                plan3Desc: "We get to work, turning your raw data into powerful insights you can use every day.",
-                guideTitle: "Hi, I'm Brandon. I'm here to help.",
-                guideDesc1: "I've spent years in the trenches of data analytics, and I know how frustrating it is to have valuable data you can't use. My passion is helping business professionals like you bridge that gap.",
-                guideDesc2: "I started Crosby BI to provide a clear, straightforward path for businesses to leverage their data, make smarter decisions, and focus on what they do best: growing.",
-                guideLink1: "Connect on LinkedIn &rarr;",
-                guideLink2: "View My Portfolio &rarr;",
-                guideLink3: "Watch on YouTube &rarr;",
-                servicesTitle: "How We Help",
-                servicesSubtitle: "We offer a range of services designed to meet you where you are on your data journey.",
-                service1Title: "Custom Dashboard Development",
-                service1Desc: "Our core offering. We build a complete, professional Power BI report from the ground up, tailored to your specific business needs and KPIs.",
-                service2Title: "Expert Advisory Sessions",
-                service2Desc: "On-demand, hourly consulting to help you get unstuck. Perfect for solving a specific Power BI problem or getting a professional review of your work.",
-                service3Title: "Team Training Workshops",
-                service3Desc: "Upskill your team with live, hands-on training. We cover the fundamentals of Power BI to empower your team to build their own insights.",
-                stakesTitle: "Choose Your Path Forward",
-                stakesFailTitle: "Without a Clear Plan",
-                stakesFail1: "Continue wasting hours on manual reports.",
-                stakesFail2: "Make critical decisions based on guesswork.",
-                stakesFail3: "Remain frustrated by scattered, messy data.",
-                stakesFail4: "Fall behind data-driven competitors.",
-                stakesSuccessTitle: "With Crosby BI as Your Guide",
-                stakesSuccess1: "Gain access to automated, up-to-date insights.",
-                stakesSuccess2: "Enable confident decisions backed by data.",
-                stakesSuccess3: "Have a single source of truth for your KPIs.",
-                stakesSuccess4: "Focus your time on growth, not spreadsheets.",
-                finalCtaTitle: "Ready to Unlock the Power of Your Data?",
-                finalCtaSubtitle: "Stop letting valuable insights hide in messy spreadsheets. Let's build a solution that drives growth and saves you time.",
-                finalCtaButton: "Schedule Your Free Consultation",
-                footerServices: "Services",
-                footerPlan: "Our Plan",
-                footerContact: "Contact",
-            },
-            es: {
-                navServices: "Servicios",
-                navPlan: "Nuestro Plan",
-                navContact: "Contacto",
-                heroTitle: "Deje de Adivinar. Empiece a Saber.",
-                heroSubtitle: "Transformamos sus datos desordenados y dispersos en paneles de Power BI claros, automatizados e interactivos que le dan la confianza para hacer crecer su negocio.",
-                heroCTA: "Programe su Consulta Gratuita",
-                problemTitle: "¿Le Suena Familiar?",
-                problemSubtitle: "Muchas empresas sienten que vuelan a ciegas, incapaces de obtener las respuestas que necesitan de los datos que ya tienen.",
-                problem1Title: "Horas Perdidas",
-                problem1Desc: "Usted y su equipo pasan incontables horas exportando, limpiando y compilando datos manualmente para informes semanales o mensuales.",
-                problem2Title: "Datos Dispersos",
-                problem2Desc: "Su información está repartida en hojas de cálculo, software y diferentes departamentos, lo que hace imposible tener una única fuente de verdad.",
-                problem3Title: "Suposiciones Arriesgadas",
-                problem3Desc: "Se ve obligado a tomar decisiones comerciales críticas basándose en la intuición o en datos incompletos, esperando tener razón.",
-                planTitle: "Su Plan de 3 Pasos hacia la Claridad de Datos",
-                planSubtitle: "Hacemos que pasar del caos de datos a la confianza basada en datos sea sencillo.",
-                plan1Title: "Programe una Llamada",
-                plan1Desc: "Reserve una consulta gratuita y sin compromiso para discutir sus objetivos comerciales y desafíos de datos.",
-                plan2Title: "Obtenga un Plan Personalizado",
-                plan2Desc: "Delinearemos un plan de proyecto claro, ya sea para un panel personalizado, capacitación o asesoría.",
-                plan3Title: "Transforme sus Datos",
-                plan3Desc: "Nos ponemos a trabajar, convirtiendo sus datos brutos en información valiosa que puede usar todos los días.",
-                guideTitle: "Hola, soy Brandon. Estoy aquí para ayudar.",
-                guideDesc1: "He pasado años en las trincheras del análisis de datos y sé lo frustrante que es tener datos valiosos que no puede usar. Mi pasión es ayudar a profesionales como usted a cerrar esa brecha.",
-                guideDesc2: "Inicié Crosby BI para proporcionar un camino claro y directo para que las empresas aprovechen sus datos, tomen decisiones más inteligentes y se centren en lo que mejor saben hacer: crecer.",
-                guideLink1: "Conectar en LinkedIn &rarr;",
-                guideLink2: "Ver Mi Portafolio &rarr;",
-                guideLink3: "Ver en YouTube &rarr;",
-                servicesTitle: "Cómo Ayudamos",
-                servicesSubtitle: "Ofrecemos una gama de servicios diseñados para encontrarlo en el punto en que se encuentre en su viaje de datos.",
-                service1Title: "Desarrollo de Paneles Personalizados",
-                service1Desc: "Nuestra oferta principal. Construimos un informe completo y profesional de Power BI desde cero, adaptado a sus necesidades comerciales y KPIs específicos.",
-                service2Title: "Sesiones de Asesoría Experta",
-                service2Desc: "Consultoría por hora y bajo demanda para ayudarlo a desatascarse. Perfecto para resolver un problema específico de Power BI o para obtener una revisión profesional de su trabajo.",
-                service3Title: "Talleres de Capacitación para Equipos",
-                service3Desc: "Mejore las habilidades de su equipo con capacitación práctica en vivo. Cubrimos los fundamentos de Power BI para capacitar a su equipo para que construyan sus propias perspectivas.",
-                stakesTitle: "Elija su Camino a Seguir",
-                stakesFailTitle: "Sin un Plan Claro",
-                stakesFail1: "Continuar perdiendo horas en informes manuales.",
-                stakesFail2: "Tomar decisiones críticas basadas en suposiciones.",
-                stakesFail3: "Seguir frustrado por datos dispersos y desordenados.",
-                stakesFail4: "Quedarse atrás de los competidores basados en datos.",
-                stakesSuccessTitle: "Con Crosby BI como su Guía",
-                stakesSuccess1: "Obtenga acceso a información automatizada y actualizada.",
-                stakesSuccess2: "Tome decisiones seguras respaldadas por datos.",
-                stakesSuccess3: "Tenga una única fuente de verdad para sus KPIs.",
-                stakesSuccess4: "Enfoque su tiempo en el crecimiento, no en las hojas de cálculo.",
-                finalCtaTitle: "¿Listo para Desbloquear el Poder de sus Datos?",
-                finalCtaSubtitle: "Deje de permitir que información valiosa se esconda en hojas de cálculo desordenadas. Construyamos una solución que impulse el crecimiento y le ahorre tiempo.",
-                finalCtaButton: "Programe su Consulta Gratuita",
-                footerServices: "Servicios",
-                footerPlan: "Nuestro Plan",
-                footerContact: "Contacto",
-            }
-        };
+  <section class="band band-mist" id="work">
+    <div class="wrap">
+      <h2 data-i18n="workTitle">Reports you can open right now</h2>
+      <p class="band-intro" data-i18n="workIntro">Each of these is live. Open one and use the filters to see how it works.</p>
 
-        const setLanguage = (lang) => {
-            document.documentElement.lang = lang;
-            localStorage.setItem('crosbybi_lang', lang);
-            document.querySelectorAll('[data-key]').forEach(element => {
-                const key = element.getAttribute('data-key');
-                if (translations[lang] && translations[lang][key]) {
-                    // Use textContent for buttons to preserve HTML entities like &rarr;
-                    element.innerHTML = translations[lang][key];
-                }
-            });
-        };
+      <article class="case">
+        <div class="case-text">
+          <h3 class="case-title"><span data-i18n="c1a">City of Laredo</span><b data-i18n="c1b">Adopted budget</b><span data-i18n="c1c">Fiscal year 2022 to 2023</span></h3>
+          <p data-i18n="c1d">A public report where residents can explore the city's revenues, expenditures, department and fund relationships, and budgeted positions. It follows IBCS notation, so prior year, actual and variance read the same way on every page.</p>
+          <p><a class="case-link" href="https://app.powerbi.com/view?r=eyJrIjoiNGYzZTkzZDctZGE5OC00M2JhLThjZDUtZDBlZmYyNzBhNmU2IiwidCI6IjlkMmU0NWFkLWJmOTMtNDg5NS1iMjRiLTliYmQwMzY5OGE2MCJ9" target="_blank" rel="noopener" data-i18n="openLive">Open the live report</a></p>
+        </div>
+        <a class="case-shot" href="https://app.powerbi.com/view?r=eyJrIjoiNGYzZTkzZDctZGE5OC00M2JhLThjZDUtZDBlZmYyNzBhNmU2IiwidCI6IjlkMmU0NWFkLWJmOTMtNDg5NS1iMjRiLTliYmQwMzY5OGE2MCJ9" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+          <img src="images/work-budget.webp" width="1600" height="829" alt="" loading="lazy">
+        </a>
+      </article>
 
-        // On page load, check for saved language or default to English
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('crosbybi_lang') || 'en';
-            setLanguage(savedLang);
-        });
-    </script>
+      <article class="case">
+        <div class="case-text">
+          <h3 class="case-title"><span data-i18n="c2a">City of Laredo</span><b data-i18n="c2b">311 closed service requests</b><span data-i18n="c2c">Fiscal years 2022 and 2023</span></h3>
+          <p data-i18n="c2d">A public report on 311 service requests. Residents can filter by assigned department, request type and council district, and compare each department with the year before.</p>
+          <p><a class="case-link" href="https://app.powerbi.com/view?r=eyJrIjoiNWJiOGRlMzktNTU1NC00ODFhLThlMGMtM2FjYzgyNTE3N2EzIiwidCI6IjlkMmU0NWFkLWJmOTMtNDg5NS1iMjRiLTliYmQwMzY5OGE2MCJ9" target="_blank" rel="noopener" data-i18n="openLive">Open the live report</a></p>
+        </div>
+        <a class="case-shot" href="https://app.powerbi.com/view?r=eyJrIjoiNWJiOGRlMzktNTU1NC00ODFhLThlMGMtM2FjYzgyNTE3N2EzIiwidCI6IjlkMmU0NWFkLWJmOTMtNDg5NS1iMjRiLTliYmQwMzY5OGE2MCJ9" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+          <img src="images/work-311.webp" width="1400" height="900" alt="" loading="lazy">
+        </a>
+      </article>
+
+      <article class="case">
+        <div class="case-text">
+          <h3 class="case-title"><span data-i18n="c3a">Municipal permits</span><b data-i18n="c3b">Building permit activity</b><span data-i18n="c3c">2008 to present</span></h3>
+          <p data-i18n="c3d">Permit counts and project valuations by permit type and revenue category, with each figure compared against the prior period. Built on a proper date table with DAX time intelligence and a custom report theme.</p>
+          <p><a class="case-link" href="https://app.fabric.microsoft.com/view?r=eyJrIjoiODY2MzU2MTItNmI5NC00NjQxLWI3ZTktMzI1ZmViNzM2ZmY1IiwidCI6ImJhNTQwY2UyLTZiZGYtNGNlNy05NWEzLTQ3YTBkZjM0OWI5OSJ9" target="_blank" rel="noopener" data-i18n="openLive">Open the live report</a></p>
+        </div>
+        <a class="case-shot" href="https://app.fabric.microsoft.com/view?r=eyJrIjoiODY2MzU2MTItNmI5NC00NjQxLWI3ZTktMzI1ZmViNzM2ZmY1IiwidCI6ImJhNTQwY2UyLTZiZGYtNGNlNy05NWEzLTQ3YTBkZjM0OWI5OSJ9" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+          <img src="images/work-permits.webp" width="1400" height="793" alt="" loading="lazy">
+        </a>
+      </article>
+
+      <article class="case">
+        <div class="case-text">
+          <h3 class="case-title"><span data-i18n="c4a">Sample company data</span><b data-i18n="c4b">Project expenses and budget variance</b><span data-i18n="c4c">Fiscal year 2025</span></h3>
+          <p data-i18n="c4d">A one-page report for project-based businesses that shows budget against actual spending by project and expense category. A selector switches what the charts break down by, and the table drills into each category.</p>
+          <p><a class="case-link" href="https://app.fabric.microsoft.com/view?r=eyJrIjoiNzE2MDY2OTctYzZkNS00MDM5LWJhOWQtMzllMmNkM2ExNTM1IiwidCI6ImJhNTQwY2UyLTZiZGYtNGNlNy05NWEzLTQ3YTBkZjM0OWI5OSJ9" target="_blank" rel="noopener" data-i18n="openLive">Open the live report</a></p>
+        </div>
+        <a class="case-shot" href="https://app.fabric.microsoft.com/view?r=eyJrIjoiNzE2MDY2OTctYzZkNS00MDM5LWJhOWQtMzllMmNkM2ExNTM1IiwidCI6ImJhNTQwY2UyLTZiZGYtNGNlNy05NWEzLTQ3YTBkZjM0OWI5OSJ9" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+          <img src="images/work-expenses.webp" width="1400" height="722" alt="" loading="lazy">
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <section class="band" id="services">
+    <div class="wrap">
+      <h2 data-i18n="svcTitle">What I can do for you</h2>
+      <dl class="services">
+        <div class="service">
+          <dt data-i18n="s1">Dashboard build</dt>
+          <dd data-i18n="s1d">A complete Power BI report, from your data sources through a clean data model to a published report your team can filter and trust.</dd>
+          <dd class="price" data-i18n="pFixed">Fixed scope and price</dd>
+        </div>
+        <div class="service">
+          <dt data-i18n="s2">Data model and Power Query cleanup</dt>
+          <dd data-i18n="s2d">For reports that are slow, hard to change or give numbers nobody trusts. I rebuild the model and the data preparation underneath them.</dd>
+          <dd class="price" data-i18n="pFixed">Fixed scope and price</dd>
+        </div>
+        <div class="service">
+          <dt data-i18n="s3">Excel automation</dt>
+          <dd data-i18n="s3d">Python scripts that take over recurring reconciliations and report preparation that someone currently does by hand in Excel.</dd>
+          <dd class="price" data-i18n="pFixed">Fixed scope and price</dd>
+        </div>
+        <div class="service">
+          <dt data-i18n="s4">Advisory sessions</dt>
+          <dd data-i18n="s4d">Help with one specific Power BI or DAX problem, or a review of a report you have already built.</dd>
+          <dd class="price" data-i18n="pHour">By the hour</dd>
+        </div>
+        <div class="service">
+          <dt data-i18n="s5">Team training</dt>
+          <dd data-i18n="s5d">Live, hands-on Power BI workshops so your own team can build and maintain reports.</dd>
+          <dd class="price" data-i18n="pWorkshop">Per workshop</dd>
+        </div>
+      </dl>
+      <p class="services-note" data-i18n="svcNote">You get the scope and the price in writing before any work starts.</p>
+    </div>
+  </section>
+
+  <section class="band band-mist" id="process">
+    <div class="wrap">
+      <h2 data-i18n="stepTitle">How a project runs</h2>
+      <ol class="steps">
+        <li>
+          <h3 data-i18n="st1">A 15-minute call</h3>
+          <p data-i18n="st1d">You show me the report or process that is costing you time. I tell you whether I can help and what it would involve.</p>
+        </li>
+        <li>
+          <h3 data-i18n="st2">A written scope and price</h3>
+          <p data-i18n="st2d">You get a short document that says what will be built, what I need from you and what it costs.</p>
+        </li>
+        <li>
+          <h3 data-i18n="st3">Build, review and handover</h3>
+          <p data-i18n="st3d">I build the report, you review it with your own data, and I walk your team through how to use it.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band" id="about">
+    <div class="wrap about">
+      <img src="images/headshot.webp" width="560" height="560" alt="Brandon Crosby Reyes" loading="lazy">
+      <div class="about-text">
+        <h2 data-i18n="abTitle">You work with the person doing the work</h2>
+        <p data-i18n="ab1">I'm Brandon Crosby Reyes. I spent four years as Data Officer for the City of Laredo, where I built the public budget and 311 reports above, and then worked as a Principal Consultant at P3 Adaptive, a Power BI consulting firm.</p>
+        <p data-i18n="ab2">I have also taught for more than 15 years. That is why I explain things in plain language and build reports people can use without a manual.</p>
+        <p data-i18n="ab3">Crosby BI is a small practice. I take on a limited number of projects at a time, so each one gets my full attention.</p>
+        <div class="about-links">
+          <a href="https://www.linkedin.com/in/brandoncrosbyreyes" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.youtube.com/@crosbybiOfficial" target="_blank" rel="noopener" data-i18n="abYt">Power BI tutorials on YouTube</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band contact" id="contact">
+    <div class="wrap">
+      <h2 data-i18n="ctTitle">Tell me what you're trying to fix</h2>
+      <p class="band-intro" data-i18n="ctIntro">A few sentences is enough. I read every message myself and reply by email.</p>
+      <div class="contact-grid">
+        <form id="inquiry" novalidate>
+          <div class="two">
+            <div class="field">
+              <label for="f-name" data-i18n="fName">Your name</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="f-email" data-i18n="fEmail">Email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required>
+            </div>
+          </div>
+          <div class="two">
+            <div class="field">
+              <label for="f-org"><span data-i18n="fOrg">Organization</span> <span class="opt" data-i18n="fOpt">(optional)</span></label>
+              <input id="f-org" name="organization" type="text" autocomplete="organization">
+            </div>
+            <div class="field">
+              <label for="f-need" data-i18n="fNeed">What do you need?</label>
+              <select id="f-need" name="need">
+                <option value="New dashboard" data-i18n="n1">A new dashboard</option>
+                <option value="Fix existing report or model" data-i18n="n2">Fixing a report or data model</option>
+                <option value="Excel automation" data-i18n="n3">Excel automation</option>
+                <option value="Advisory" data-i18n="n4">Advice on a specific problem</option>
+                <option value="Training" data-i18n="n5">Team training</option>
+                <option value="Not sure yet" data-i18n="n6">Not sure yet</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-msg" data-i18n="fMsg">What's going on?</label>
+            <textarea id="f-msg" name="message" required></textarea>
+          </div>
+          <div class="trap" aria-hidden="true">
+            <label for="f-site">Leave this empty</label>
+            <input id="f-site" name="botcheck" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <div>
+            <button class="btn btn-main" type="submit" data-i18n="fSend">Send message</button>
+          </div>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="aside">
+          <div class="aside-block">
+            <h3 data-i18n="asCall">Prefer to talk?</h3>
+            <p data-i18n="asCallD">Pick a time for a free 15-minute call. There is no obligation.</p>
+            <a class="btn btn-plain" style="border-color:#fff;color:#fff" href="https://calendly.com/crosbybi/15min" target="_blank" rel="noopener" data-i18n="ctaCall">Book a free 15-minute call</a>
+          </div>
+          <div class="aside-block">
+            <h3 data-i18n="asMail">Email</h3>
+            <p><a id="mail-link" href="mailto:crosbyreyes@outlook.com">crosbyreyes@outlook.com</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <p>&copy; <span id="year">2026</span> Crosby BI. Laredo, Texas.</p>
+    <nav aria-label="Footer">
+      <a href="#work" data-i18n="navWork">Work</a>
+      <a href="#services" data-i18n="navServices">Services</a>
+      <a href="#contact" data-i18n="navContact">Contact</a>
+      <a href="https://www.linkedin.com/in/brandoncrosbyreyes" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.youtube.com/@crosbybiOfficial" target="_blank" rel="noopener">YouTube</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+/* ---------- Settings ---------- */
+// Paste the Web3Forms access key here to have the form email every inquiry.
+// While it is empty, the form opens the visitor's email app with the message filled in.
+const FORM_ACCESS_KEY = "";
+const CONTACT_EMAIL = "crosbyreyes@outlook.com";
+
+/* ---------- Spanish copy (English lives in the HTML) ---------- */
+const ES = {
+  skip: "Ir al contenido",
+  navWork: "Trabajo", navServices: "Servicios", navAbout: "Acerca de", navContact: "Contacto",
+  heroA: "Deje de adivinar.", heroB: "Empiece a saber.",
+  heroLede: "Crosby BI crea informes de Power BI que reemplazan los reportes manuales en hojas de cálculo, para que los equipos de finanzas, operaciones y sector público comparen presupuesto y resultados reales sin rehacer los números cada mes.",
+  ctaCall: "Reserve una llamada gratuita de 15 minutos", ctaWork: "Ver el trabajo",
+  heroAlt: "Informe de Power BI del presupuesto adoptado de la Ciudad de Laredo, que compara el año anterior y los montos reales por fondo con barras de variación.",
+  heroCap: "El presupuesto adoptado de la Ciudad de Laredo, un informe público de Power BI que construí. Seleccione la imagen para abrir el informe en vivo.",
+  fact1: "Certificado por Microsoft", fact1s: "Power BI Data Analyst Associate (PL-300)",
+  fact2: "Consultor principal", fact2s: "P3 Adaptive, 2024 a 2025",
+  fact3: "Oficial de datos", fact3s: "Ciudad de Laredo, 2020 a 2024",
+  fact4: "Ponente invitado", fact4s: "Cumbre Opportunity Project de la Oficina del Censo de EE. UU.",
+  painTitle: "Lo que suele traer a la gente aquí",
+  pain1: "El informe mensual toma días",
+  pain1d: "Alguien exporta, limpia y pega los mismos datos cada semana o cada mes, y el informe ya está desactualizado cuando se termina.",
+  pain2: "Los números no coinciden",
+  pain2d: "Los datos viven en hojas de cálculo, sistemas y distintos departamentos, así que dos personas pueden llegar a la misma reunión con dos totales diferentes.",
+  pain3: "Las decisiones esperan a los datos",
+  pain3d: "Los excesos de presupuesto y las tendencias aparecen tarde, porque nadie puede ver lo real contra lo planeado hasta que el reporte está listo.",
+  workTitle: "Informes que puede abrir ahora mismo",
+  workIntro: "Todos están en vivo. Abra uno y use los filtros para ver cómo funciona.",
+  openLive: "Abrir el informe en vivo",
+  c1a: "Ciudad de Laredo", c1b: "Presupuesto adoptado", c1c: "Año fiscal 2022 a 2023",
+  c1d: "Un informe público donde los residentes pueden explorar los ingresos, los gastos, la relación entre departamentos y fondos, y los puestos presupuestados de la ciudad. Sigue la notación IBCS, por lo que el año anterior, lo real y la variación se leen igual en cada página.",
+  c2a: "Ciudad de Laredo", c2b: "Solicitudes de servicio 311 cerradas", c2c: "Años fiscales 2022 y 2023",
+  c2d: "Un informe público sobre las solicitudes de servicio 311. Los residentes pueden filtrar por departamento asignado, tipo de solicitud y distrito del concejo, y comparar cada departamento con el año anterior.",
+  c3a: "Permisos municipales", c3b: "Actividad de permisos de construcción", c3c: "2008 al presente",
+  c3d: "Cantidad de permisos y valuación de proyectos por tipo de permiso y categoría de ingreso, con cada cifra comparada contra el periodo anterior. Construido sobre una tabla de fechas adecuada, con inteligencia de tiempo en DAX y un tema de informe personalizado.",
+  c4a: "Datos de una empresa de ejemplo", c4b: "Gastos de proyectos y variación presupuestal", c4c: "Año fiscal 2025",
+  c4d: "Un informe de una página para empresas que trabajan por proyectos, que muestra el presupuesto contra el gasto real por proyecto y categoría de gasto. Un selector cambia el desglose de las gráficas, y la tabla permite profundizar en cada categoría.",
+  svcTitle: "Lo que puedo hacer por usted",
+  s1: "Desarrollo de tableros",
+  s1d: "Un informe completo de Power BI, desde sus fuentes de datos, pasando por un modelo de datos limpio, hasta un informe publicado que su equipo puede filtrar y en el que puede confiar.",
+  s2: "Limpieza del modelo de datos y Power Query",
+  s2d: "Para informes que son lentos, difíciles de cambiar o que dan números en los que nadie confía. Reconstruyo el modelo y la preparación de datos que los sostienen.",
+  s3: "Automatización de Excel",
+  s3d: "Scripts de Python que se encargan de las conciliaciones recurrentes y de la preparación de reportes que hoy alguien hace a mano en Excel.",
+  s4: "Sesiones de asesoría",
+  s4d: "Ayuda con un problema específico de Power BI o DAX, o una revisión de un informe que usted ya construyó.",
+  s5: "Capacitación para equipos",
+  s5d: "Talleres prácticos de Power BI en vivo para que su propio equipo pueda crear y mantener informes.",
+  pFixed: "Alcance y precio fijos", pHour: "Por hora", pWorkshop: "Por taller",
+  svcNote: "Usted recibe el alcance y el precio por escrito antes de que empiece cualquier trabajo.",
+  stepTitle: "Cómo se desarrolla un proyecto",
+  st1: "Una llamada de 15 minutos",
+  st1d: "Usted me muestra el informe o el proceso que le está costando tiempo. Yo le digo si puedo ayudar y qué implicaría.",
+  st2: "Alcance y precio por escrito",
+  st2d: "Usted recibe un documento breve que dice qué se va a construir, qué necesito de usted y cuánto cuesta.",
+  st3: "Desarrollo, revisión y entrega",
+  st3d: "Construyo el informe, usted lo revisa con sus propios datos y le explico a su equipo cómo usarlo.",
+  abTitle: "Usted trabaja con la persona que hace el trabajo",
+  ab1: "Soy Brandon Crosby Reyes. Fui oficial de datos de la Ciudad de Laredo durante cuatro años, donde construí los informes públicos de presupuesto y 311 que aparecen arriba, y después trabajé como consultor principal en P3 Adaptive, una firma de consultoría de Power BI.",
+  ab2: "También he enseñado por más de 15 años. Por eso explico las cosas en lenguaje sencillo y construyo informes que la gente puede usar sin un manual.",
+  ab3: "Crosby BI es una práctica pequeña. Acepto un número limitado de proyectos a la vez, para que cada uno reciba toda mi atención.",
+  abYt: "Tutoriales de Power BI en YouTube",
+  ctTitle: "Cuénteme qué quiere resolver",
+  ctIntro: "Con unas cuantas oraciones basta. Leo cada mensaje personalmente y respondo por correo electrónico.",
+  fName: "Su nombre", fEmail: "Correo electrónico", fOrg: "Organización", fOpt: "(opcional)",
+  fNeed: "¿Qué necesita?",
+  n1: "Un tablero nuevo", n2: "Arreglar un informe o modelo de datos", n3: "Automatización de Excel",
+  n4: "Asesoría sobre un problema específico", n5: "Capacitación para mi equipo", n6: "Aún no estoy seguro",
+  fMsg: "¿Qué está pasando?", fSend: "Enviar mensaje",
+  asCall: "¿Prefiere hablar?",
+  asCallD: "Elija una hora para una llamada gratuita de 15 minutos. Sin compromiso.",
+  asMail: "Correo electrónico"
+};
+
+const STATUS = {
+  en: {
+    missing: "Add your name, a valid email and a short message, then send again.",
+    sending: "Sending your message.",
+    sent: "Message sent. I'll reply by email.",
+    mail: "Your email app should open with the message filled in. If it doesn't, write to " + CONTACT_EMAIL + "."
+  },
+  es: {
+    missing: "Agregue su nombre, un correo válido y un mensaje breve, y envíe de nuevo.",
+    sending: "Enviando su mensaje.",
+    sent: "Mensaje enviado. Le responderé por correo electrónico.",
+    mail: "Su aplicación de correo debería abrirse con el mensaje listo. Si no se abre, escriba a " + CONTACT_EMAIL + "."
+  }
+};
+
+/* ---------- Language toggle ---------- */
+const EN = {};
+const EN_ALT = {};
+let lang = "en";
+
+function store(key, value) {
+  try {
+    if (value === undefined) return localStorage.getItem(key);
+    localStorage.setItem(key, value);
+  } catch (e) { return null; }
+}
+
+function setLanguage(next) {
+  lang = next === "es" ? "es" : "en";
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(function (el) {
+    const key = el.getAttribute("data-i18n");
+    if (!(key in EN)) EN[key] = el.textContent;
+    el.textContent = lang === "es" && ES[key] ? ES[key] : EN[key];
+  });
+  document.querySelectorAll("[data-i18n-alt]").forEach(function (el) {
+    const key = el.getAttribute("data-i18n-alt");
+    if (!(key in EN_ALT)) EN_ALT[key] = el.getAttribute("alt");
+    el.setAttribute("alt", lang === "es" && ES[key] ? ES[key] : EN_ALT[key]);
+  });
+  document.querySelectorAll(".lang button").forEach(function (b) {
+    b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
+  });
+  document.getElementById("form-status").textContent = "";
+  store("crosbybi_lang", lang);
+}
+
+document.querySelectorAll(".lang button").forEach(function (b) {
+  b.addEventListener("click", function () { setLanguage(b.dataset.lang); });
+});
+setLanguage(store("crosbybi_lang") || "en");
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* ---------- Inquiry form ---------- */
+const form = document.getElementById("inquiry");
+const statusEl = document.getElementById("form-status");
+
+function say(key, bad) {
+  statusEl.textContent = STATUS[lang][key];
+  statusEl.classList.toggle("bad", !!bad);
+}
+
+function openMail(data) {
+  const subject = "Crosby BI inquiry from " + data.name;
+  const body = [
+    "Name: " + data.name,
+    "Email: " + data.email,
+    "Organization: " + (data.organization || "-"),
+    "Need: " + data.need,
+    "",
+    data.message
+  ].join("\n");
+  window.location.href = "mailto:" + CONTACT_EMAIL +
+    "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+  say("mail");
+}
+
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+  const data = Object.fromEntries(new FormData(form).entries());
+  if (data.botcheck) return;
+  delete data.botcheck;
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email || "");
+  if (!data.name.trim() || !emailOk || !data.message.trim()) { say("missing", true); return; }
+
+  if (!FORM_ACCESS_KEY) { openMail(data); return; }
+
+  say("sending");
+  fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "Accept": "application/json" },
+    body: JSON.stringify(Object.assign({
+      access_key: FORM_ACCESS_KEY,
+      subject: "New Crosby BI inquiry from " + data.name,
+      from_name: "Crosby BI website"
+    }, data))
+  })
+    .then(function (r) { return r.json(); })
+    .then(function (result) {
+      if (!result.success) throw new Error("not sent");
+      form.reset();
+      say("sent");
+      if (typeof gtag === "function") gtag("event", "generate_lead", { method: "contact_form" });
+    })
+    .catch(function () { openMail(data); });
+});
+</script>
 </body>
 </html>

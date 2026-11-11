@@ -1,17 +1,16 @@
-# Crosby BI - Single-Page Consultancy Website
+# Crosby BI website
 
-This repository contains the source code for a responsive, single-page marketing website for a data analytics consultancy, Crosby BI. The project was built from scratch with a focus on clean code, modern CSS, and a clear user experience based on the StoryBrand framework.
+Source for [crosbybi.com](https://www.crosbybi.com/), the single-page site for Crosby BI (Power BI consulting).
 
-## Live Demo
+## Structure
 
-You can view the live website here: **https://bcreyes-data.github.io/crosbybi-website/**
+- `index.html` holds the whole page: markup, styles and script. English copy lives in the HTML; Spanish copy lives in the `ES` object in the script.
+- `images/` holds the logo, headshot and report screenshots.
 
-## Technologies Used
+## Contact form
 
-*   **HTML5:** For semantic and accessible content structure.
-*   **CSS3:** For all styling, using modern features like CSS Variables, Flexbox, and Grid for a responsive layout.
-*   **No frameworks or libraries:** This project is built with pure HTML and CSS.
+The form posts to [Web3Forms](https://web3forms.com), which emails each inquiry. Paste the access key into `FORM_ACCESS_KEY` near the top of the script in `index.html`. While the key is empty, or if sending fails, the form opens the visitor's email app with the message filled in and addressed to `CONTACT_EMAIL`.
 
-## Purpose
+## Editing copy
 
-This project serves as a portfolio piece to demonstrate front-end development capabilities, including responsive design, CSS architecture, and the ability to translate a business case into a functional web product.
+Each translatable element has a `data-i18n` key. Change the English text in the HTML and the matching entry in `ES`.
